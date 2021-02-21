@@ -90,12 +90,15 @@ void Window::Show() {
 
         renderer.Clear();
 
-        for (float x = 0.0f; x < 16.0f; x++) {
+        cube.SetPosition(0.0f, 0.0f, 0.0f);
+        renderer.DrawTutorialCube(cube);
+
+        /*for (float x = 0.0f; x < 16.0f; x++) {
             for (float z = 0.0f; z < 16.0f; z++) {
                 cube.SetPosition(x, 0.0f, z);
                 renderer.DrawTutorialCube(cube);
             }
-        }
+        }*/
 
         glfwSwapBuffers(context);
         glfwPollEvents();

@@ -11,6 +11,7 @@
 #include "TutorialCube.h"
 
 Archiv::Vertex tutorialCubeVertices[] = {
+    // Back side
     Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
     Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 0.0f },
     Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
@@ -18,6 +19,7 @@ Archiv::Vertex tutorialCubeVertices[] = {
     Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
     Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
 
+    // Front side
     Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
     Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
     Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 1.0f },
@@ -25,6 +27,7 @@ Archiv::Vertex tutorialCubeVertices[] = {
     Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f, 1.0f },
     Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
 
+    // Left side
     Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
     Archiv::Vertex {-0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
     Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
@@ -32,6 +35,7 @@ Archiv::Vertex tutorialCubeVertices[] = {
     Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
     Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
 
+    // Right side
     Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
     Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
     Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
@@ -39,6 +43,7 @@ Archiv::Vertex tutorialCubeVertices[] = {
     Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
     Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
 
+    // Bottom side
     Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
     Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 1.0f },
     Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
@@ -46,6 +51,7 @@ Archiv::Vertex tutorialCubeVertices[] = {
     Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
     Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
 
+    // Top side
     Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
     Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
     Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },

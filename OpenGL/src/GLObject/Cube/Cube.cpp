@@ -6,51 +6,52 @@
 #include "../VertexBuffer/VertexBuffer.h"
 #include "../VertexBufferLayout/VertexBufferLayout.h"
 #include "../Texture/Texture2D.h"
+#include "../Vertex/Vertex.h"
 
 #include "Cube.h"
 
-float vertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+Archiv::Vertex cubeVertices[] = {
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 0.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
 
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 1.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 1.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f, 1.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
 
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
 
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
 
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
 
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f, 0.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f }
 };
 
 Cube::Cube() {
@@ -61,7 +62,7 @@ Cube::Cube() {
 
     vertexArray = new VertexArray();
 
-    VertexBuffer vertexBuffer(vertices, sizeof(vertices));
+    VertexBuffer vertexBuffer(cubeVertices, sizeof(cubeVertices));
     VertexBufferLayout vertexBufferLayout;
 
     vertexBufferLayout.Add<float>(3); // Positions
