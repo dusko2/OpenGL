@@ -6,10 +6,10 @@ class VertexBufferLayout;
 
 class VertexBuffer : public GLObject {
 
-	public:
-		VertexBuffer(const void* data, uint32 size);
-		~VertexBuffer();
+    public:
+        VertexBuffer(const void* data, uint32 size);
+        ~VertexBuffer();
 
-		void Bind() const;
-		void Unbind() const;
+        void Bind() const;
+        void Unbind() const;
 };

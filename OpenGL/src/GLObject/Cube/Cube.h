@@ -10,38 +10,38 @@ class Texture2D;
 
 class Cube {
 
-	private:
-		ShaderProgram* shaderProgram;
-		VertexArray* vertexArray;
-		Texture2D* texture;
+    private:
+        ShaderProgram* shaderProgram;
+        VertexArray* vertexArray;
+        Texture2D* texture;
 
-		glm::vec3* position;
+        glm::vec3* position;
 
-	public:
-		Cube();
-		~Cube();
+    public:
+        Cube();
+        ~Cube();
 
-		void OnBeforeRender();
+        void OnBeforeRender();
 
-		inline const ShaderProgram& GetShaderProgram() const {
-			return *shaderProgram;
-		}
+        inline const ShaderProgram& GetShaderProgram() const {
+            return *shaderProgram;
+        }
 
-		inline const VertexArray& GetVertexArray() const {
-			return *vertexArray;
-		}
+        inline const VertexArray& GetVertexArray() const {
+            return *vertexArray;
+        }
 
-		inline const Texture2D& GetTexture() const {
-			return *texture;
-		}
+        inline const Texture2D& GetTexture() const {
+            return *texture;
+        }
 
-		inline const glm::vec3& GetPosition() const {
-			return *position;
-		}
+        inline const glm::vec3& GetPosition() const {
+            return *position;
+        }
 
-		inline void SetPosition(float x, float y, float z) {
-			position->x = x;
-			position->y = y;
-			position->z = z;
-		}
+        inline void SetPosition(float x, float y, float z) {
+            position->x = x;
+            position->y = y;
+            position->z = z;
+        }
 };

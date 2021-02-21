@@ -11,5 +11,5 @@ int main(void) {
     ShaderLoader::GetInstance().Load();
     UIWindow::GetInstance().StartLoop();
 
-	return 0;
+    return 0;
 }

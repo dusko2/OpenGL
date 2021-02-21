@@ -4,15 +4,15 @@
 
 class GLObject {
 
-	private:
-		const char* className;
+    private:
+        const char* className;
 
-	protected:
-		uint32 rendererID = 0;
+    protected:
+        uint32 rendererID = 0;
 
-	public:
-		GLObject(const char* name);
-		~GLObject();
+    public:
+        GLObject(const char* name);
+        ~GLObject();
 
-		inline uint32 GetRendererID() { return rendererID; }
+        inline uint32 GetRendererID() { return rendererID; }
 };

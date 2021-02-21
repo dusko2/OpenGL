@@ -2,7 +2,7 @@
 
 class GLADController {
 
-	public:
+    public:
         static GLADController& GetInstance() {
             static GLADController instance;
             return instance;
