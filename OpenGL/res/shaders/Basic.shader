@@ -1,4 +1,4 @@
-#shader-name:VertexShader
+#shader-name:TutorialCubeVertexShader
 #version 460 core
 
 // layout (location = 0) in vec3 l_position;
@@ -21,7 +21,7 @@ void main() {
     textureCoordinates = l_texture;
 }
 
-#shader-name:FragmentShader
+#shader-name:TutorialCubeFragmentShader
 #version 460 core
 
 out vec4 FragColor;

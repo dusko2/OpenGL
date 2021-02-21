@@ -1,5 +1,5 @@
 #include <glad/glad.h>
-#include "../../Image/stb_image.h"
+#include "../../../external/Image/stb_image.h"
 
 #include "../GLUtils.h"
 #include "../../Utils/IntTypes.h"

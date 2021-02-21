@@ -9,8 +9,8 @@ class Mouse {
         }
 
     private:
-        float lastX = 640.0f;
-        float lastY = 360.0f;
+        float lastX = 0.0f;
+        float lastY = 0.0f;
 
         float offsetX = 0.0f;
         float offsetY = 0.0f;
@@ -28,4 +28,6 @@ class Mouse {
         inline float GetOffsetY() const {
             return offsetY;
         }
+
+        void SetPosition(float x, float y);
 };

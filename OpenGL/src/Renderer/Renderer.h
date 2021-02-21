@@ -5,6 +5,8 @@ class ShaderProgram;
 class IndexBuffer;
 class Cube;
 
+class TutorialCube;
+
 class Renderer {
 
     public:
@@ -16,4 +18,5 @@ class Renderer {
         void Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuffer, const ShaderProgram& shaderProgram) const;
 
         void Draw(Cube& cube);
+        void DrawTutorialCube(TutorialCube& cube);
 };

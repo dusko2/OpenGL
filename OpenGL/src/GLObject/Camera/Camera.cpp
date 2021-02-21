@@ -26,11 +26,9 @@ void Camera::Move(CameraDirection cameraDirection, float deltaTime) {
     }
 }
 
-void Camera::Look() {
-    Mouse& mouse = Mouse::GetInstance();
-
-    yaw += mouse.GetOffsetX() * sensitivity;
-    pitch += mouse.GetOffsetY() * sensitivity;
+void Camera::UpdateDirection(float offsetX, float offsetY) {
+    yaw += offsetX * sensitivity;
+    pitch += offsetY * sensitivity;
 
     if (pitch > 89.0f) {
         pitch = 89.0f;

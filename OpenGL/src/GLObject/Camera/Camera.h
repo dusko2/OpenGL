@@ -37,7 +37,7 @@ class Camera {
 
     public:
         void Move(CameraDirection cameraDirection, float deltaTime);
-        void Look();
+        void UpdateDirection(float offsetX, float offsetY);
 
         inline glm::mat4 GetView() {
             return glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);

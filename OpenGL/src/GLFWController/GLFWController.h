@@ -1,5 +1,9 @@
 #pragma once
 
+#include "../Utils/IntTypes.h"
+
+class Window;
+
 class GLFWController {
 
     public:
@@ -15,4 +19,7 @@ class GLFWController {
         ~GLFWController();
 
         void Initialize();
+        void Terminate();
+
+        Window* CreateWindow(uint32 width, uint32 height, const char* title);
 };

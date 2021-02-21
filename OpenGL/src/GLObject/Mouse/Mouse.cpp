@@ -2,9 +2,7 @@
 
 #include "Mouse.h"
 
-Mouse::Mouse() {
-    glfwSetCursorPos(glfwGetCurrentContext(), lastX, lastY);
-}
+Mouse::Mouse() {}
 
 void Mouse::Update(float positionX, float positionY) {
     offsetX = positionX - lastX;
@@ -12,4 +10,14 @@ void Mouse::Update(float positionX, float positionY) {
 
     lastX = positionX;
     lastY = positionY;
+}
+
+void Mouse::SetPosition(float x, float y) {
+    lastX = x;
+    lastY = y;
+
+    offsetX = 0.0f;
+    offsetY = 0.0f;
+
+    glfwSetCursorPos(glfwGetCurrentContext(), lastX, lastY);
 }

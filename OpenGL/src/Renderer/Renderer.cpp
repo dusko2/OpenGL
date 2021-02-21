@@ -7,7 +7,9 @@
 #include "../GLObject/IndexBuffer/IndexBuffer.h"
 #include "../GLObject/ShaderProgram/ShaderProgram.h"
 #include "../GLObject/GLUtils.h"
+
 #include "../GLObject/Cube/Cube.h"
+#include "../GLObject/Cube/TutorialCube/TutorialCube.h"
 
 #include "Renderer.h"
 
@@ -39,4 +41,10 @@ void Renderer::Draw(Cube& cube) {
     cube.OnBeforeRender();
 
     Draw(cube.GetVertexArray(), cube.GetShaderProgram());
+}
+
+void Renderer::DrawTutorialCube(TutorialCube& cube) {
+    cube.Bind();
+    
+    GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 }
