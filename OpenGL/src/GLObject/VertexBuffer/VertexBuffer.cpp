@@ -2,11 +2,14 @@
 
 #include "../GLUtils.h"
 #include "VertexBuffer.h"
+#include "../Vertex/Vertex.h"
 
-VertexBuffer::VertexBuffer(const void* data, uint32 size) : GLObject(__func__) {
+#include <iostream>
+
+VertexBuffer::VertexBuffer(const Archiv::Vertex* data, uint32 count) : GLObject(__func__), count(count) {
     GLCall(glGenBuffers(1, &rendererID));
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, rendererID));
-    GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
+    GLCall(glBufferData(GL_ARRAY_BUFFER, sizeof(Archiv::Vertex) * count, data, GL_STATIC_DRAW));
 }
 
 VertexBuffer::~VertexBuffer() {

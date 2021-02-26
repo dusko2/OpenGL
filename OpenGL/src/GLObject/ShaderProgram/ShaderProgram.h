@@ -34,6 +34,8 @@ class ShaderProgram : public GLObject {
 
         void SetUniform1i(const std::string& name, int value);
 
+        void SetUniformVec3(const std::string& name, glm::vec3& value);
+
     private:
         bool Link();
         void PrintCompileError();

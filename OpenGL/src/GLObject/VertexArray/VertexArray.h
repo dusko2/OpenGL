@@ -8,9 +8,6 @@ class VertexBufferLayout;
 
 class VertexArray : public GLObject {
 
-    private:
-        std::vector<VertexBuffer*> buffers;
-
     public:
         VertexArray();
         ~VertexArray();

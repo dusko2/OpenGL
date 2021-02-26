@@ -35,11 +35,17 @@ class Camera {
 
         glm::vec3 direction;
 
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1280.0f / 720.0f, 0.1f, 100.0f);
+
     public:
         void Move(CameraDirection cameraDirection, float deltaTime);
         void UpdateDirection(float offsetX, float offsetY);
 
-        inline glm::mat4 GetView() {
+        inline glm::mat4 GetView() const {
             return glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        }
+
+        inline const glm::mat4& GetProjection() const {
+            return projection;
         }
 };

@@ -12,6 +12,7 @@
 #include "Window.h"
 
 #include "../GLObject/Cube/TutorialCube/TutorialCube.h"
+#include "../GLObject/LightSource/LightSource.h"
 #include "../Renderer/Renderer.h"
 #include "../GLObject/GLUtils.h"
 #include "../GLObject/Mouse/Mouse.h"
@@ -20,8 +21,19 @@
 Camera& camera = Camera::GetInstance();
 Mouse& mouse = Mouse::GetInstance();
 
-float deltaTime = 0.0f;
-float lastFrame = 0.0f;
+double fpsLimit = 1.0 / 60.0; // Game logic update limit
+double lastTime = 0.0;
+double timer = 0.0;
+
+double deltaTime = 0.0;
+double currentTime = 0.0;
+
+int frames = 0;
+int updates = 0;
+
+inline double CurrentTime() {
+    return glfwGetTime();
+}
 
 void ProcessInput(GLFWwindow* window)
 {
@@ -30,27 +42,27 @@ void ProcessInput(GLFWwindow* window)
     }
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Front, deltaTime);
+        camera.Move(CameraDirection::Front, (float)fpsLimit);
     }
 
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Back, deltaTime);
+        camera.Move(CameraDirection::Back, (float)fpsLimit);
     }
 
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Left, deltaTime);
+        camera.Move(CameraDirection::Left, (float)fpsLimit);
     }
 
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Right, deltaTime);
+        camera.Move(CameraDirection::Right, (float)fpsLimit);
     }
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Up, deltaTime);
+        camera.Move(CameraDirection::Up, (float)fpsLimit);
     }
 
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
-        camera.Move(CameraDirection::Down, deltaTime);
+        camera.Move(CameraDirection::Down, (float)fpsLimit);
     }
 }
 
@@ -79,29 +91,42 @@ void Window::Initialize() {
 
 void Window::Show() {
     Renderer renderer;
+
     TutorialCube cube;
+    cube.SetPosition(0.0f, 0.0f, 0.0f);
+
+    LightSource lightSource;
+    lightSource.SetPosition(10.0f, 10.0f, -10.0f);
 
     while (!ShouldClose()) {
-        float currentFrame = (float)glfwGetTime();
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        currentTime = CurrentTime();
+        deltaTime += (currentTime - lastTime) / fpsLimit;
+        lastTime = currentTime;
 
-        ProcessInput(context);
+        while (deltaTime >= 1.0) {
+            ProcessInput(context);
+            updates++;
+            deltaTime--;
+        }
 
         renderer.Clear();
 
-        cube.SetPosition(0.0f, 0.0f, 0.0f);
         renderer.DrawTutorialCube(cube);
+        renderer.DrawLightSource(lightSource);
 
-        /*for (float x = 0.0f; x < 16.0f; x++) {
-            for (float z = 0.0f; z < 16.0f; z++) {
-                cube.SetPosition(x, 0.0f, z);
-                renderer.DrawTutorialCube(cube);
-            }
-        }*/
+        frames++;
 
         glfwSwapBuffers(context);
         glfwPollEvents();
+
+        if (CurrentTime() - timer > 1.0) {
+            timer++;
+
+            std::cout << ">> [FPS] Current FPS = " << frames << ", and updates = " << updates << std::endl;
+
+            frames = 0;
+            updates = 0;
+        }
     }
 }
 

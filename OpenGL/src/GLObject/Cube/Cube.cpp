@@ -10,48 +10,58 @@
 
 #include "Cube.h"
 
-Archiv::Vertex cubeVertices[] = {
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 0.0f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f },
+Archiv::Vertex backSide[] = {
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 0.0f */ }
+};
 
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 1.0f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 1.0f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f, 1.0f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
+Archiv::Vertex frontSide[] = {
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ }
+};
 
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+Archiv::Vertex leftSide[] = {
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ }
+};
 
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
+Archiv::Vertex rightSide[] = {
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ }
+};
 
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, 1.0f },
+Archiv::Vertex bottomSide[] = {
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ }
+};
 
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f, 1.0f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f, 0.0f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f }
+Archiv::Vertex topSide[] = {
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 0.0f, 0.0f */ },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ }
 };
 
 Cube::Cube() {
@@ -62,7 +72,7 @@ Cube::Cube() {
 
     vertexArray = new VertexArray();
 
-    VertexBuffer vertexBuffer(cubeVertices, sizeof(cubeVertices));
+    VertexBuffer vertexBuffer(nullptr, sizeof(float));
     VertexBufferLayout vertexBufferLayout;
 
     vertexBufferLayout.Add<float>(3); // Positions

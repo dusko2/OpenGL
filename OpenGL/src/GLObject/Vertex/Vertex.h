@@ -8,7 +8,7 @@ namespace Archiv {
         float positionY;
         float positionZ;
 
-        float texturePositionX;
-        float texturePositionY;
+        // float texturePositionX;
+        // float texturePositionY;
     };
 }

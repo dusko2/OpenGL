@@ -78,6 +78,9 @@
     <ClCompile Include="src\GLObject\Cube\TutorialCube\TutorialCube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GLObject\LightSource\LightSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Libs\GLFW\include\GLFW\glfw3native.h">
@@ -150,6 +153,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GLObject\Cube\TutorialCube\TutorialCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GLObject\LightSource\LightSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

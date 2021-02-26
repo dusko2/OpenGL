@@ -5,7 +5,6 @@
 class Camera;
 class ShaderProgram;
 class VertexArray;
-class Texture2D;
 
 class TutorialCube {
 
@@ -15,17 +14,19 @@ class TutorialCube {
         ShaderProgram* shaderProgram;
         VertexArray* vertexArray;
 
-        Texture2D* containerTexture;
-        Texture2D* smileTexture;
-
         glm::vec3* position;
 
     public:
         TutorialCube();
         ~TutorialCube();
 
-        void Bind();
-        void Unbind();
+        inline ShaderProgram& GetShaderProgram() const {
+            return *shaderProgram;
+        }
+
+        inline const VertexArray& GetVertexArray() const {
+            return *vertexArray;
+        }
 
         inline const glm::vec3& GetPosition() const {
             return *position;
@@ -37,4 +38,3 @@ class TutorialCube {
             position->z = z;
         }
 };
-
