@@ -65,7 +65,8 @@ LightSource::LightSource() : camera(Camera::GetInstance()) {
     VertexBuffer vertexBuffer(lightSourceVertices, sizeof(lightSourceVertices) / sizeof(Archiv::Vertex));
 
     VertexBufferLayout vertexBufferLayout;
-    vertexBufferLayout.Add<float>(3);
+    vertexBufferLayout.Add<float>(3); // positions
+    vertexBufferLayout.Add<float>(3); // normals
 
     vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
 

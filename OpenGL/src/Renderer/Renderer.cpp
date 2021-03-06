@@ -63,5 +63,18 @@ void Renderer::DrawTutorialCube(TutorialCube& cube) {
 }
 
 void Renderer::DrawLightSource(LightSource& cube) {
-    Draw(cube.GetVertexArray(), cube.GetShaderProgram(), cube.GetPosition());
+    const VertexArray& vertexArray = cube.GetVertexArray();
+    ShaderProgram& shaderProgram = cube.GetShaderProgram();
+    const glm::vec3& position = cube.GetPosition();
+
+    shaderProgram.Bind();
+
+    glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
+    shaderProgram.SetUniformMatrix4f("u_model", glm::scale(model, glm::vec3(0.2f)));
+
+    shaderProgram.SetUniformMatrix4f("u_view", camera.GetView());
+    shaderProgram.SetUniformMatrix4f("u_projection", camera.GetProjection());
+
+    vertexArray.Bind();
+    GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 }

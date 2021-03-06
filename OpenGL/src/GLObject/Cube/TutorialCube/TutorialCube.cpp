@@ -10,53 +10,47 @@
 #include "TutorialCube.h"
 
 Archiv::Vertex tutorialCubeVertices[] = {
-    // Back side
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f },
 
-    // Front side
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f },
 
-    // Left side
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f },
 
-    // Right side
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f },
 
-    // Bottom side
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f },
+    Archiv::Vertex { 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f },
+    Archiv::Vertex {-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f },
+    Archiv::Vertex {-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f },
 
-    // Top side
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f }
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f },
+    Archiv::Vertex { 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f },
+    Archiv::Vertex { 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f },
+    Archiv::Vertex {-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f },
+    Archiv::Vertex {-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f }
 };
 
 TutorialCube::TutorialCube() : camera(Camera::GetInstance()) {
@@ -65,7 +59,8 @@ TutorialCube::TutorialCube() : camera(Camera::GetInstance()) {
     VertexBuffer vertexBuffer(tutorialCubeVertices, sizeof(tutorialCubeVertices) / sizeof(Archiv::Vertex));
 
     VertexBufferLayout vertexBufferLayout;
-    vertexBufferLayout.Add<float>(3);
+    vertexBufferLayout.Add<float>(3); // positions
+    vertexBufferLayout.Add<float>(3); // normals
 
     vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
 
@@ -78,6 +73,9 @@ TutorialCube::TutorialCube() : camera(Camera::GetInstance()) {
 
     glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
     shaderProgram->SetUniformVec3("u_lightColor", lightColor);
+
+    glm::vec3 lightPosition = glm::vec3(1.2f, 1.0f, 2.0f);
+    shaderProgram->SetUniformVec3("u_lightPosition", lightPosition);
 
     glm::vec3 objectColor = glm::vec3(1.0f, 0.5f, 0.31f);
     shaderProgram->SetUniformVec3("u_objectColor", objectColor);

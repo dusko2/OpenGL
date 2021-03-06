@@ -96,7 +96,7 @@ void Window::Show() {
     cube.SetPosition(0.0f, 0.0f, 0.0f);
 
     LightSource lightSource;
-    lightSource.SetPosition(10.0f, 10.0f, -10.0f);
+    lightSource.SetPosition(1.2f, 1.0f, 2.0f);
 
     while (!ShouldClose()) {
         currentTime = CurrentTime();
