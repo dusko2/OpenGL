@@ -5,10 +5,14 @@
 class VertexArray;
 class ShaderProgram;
 class IndexBuffer;
-class Cube;
+class Texture2D;
 class Camera;
 
-class TutorialCube;
+namespace Archiv {
+
+    class Quad;
+    class Cube;
+}
 
 class Renderer {
 
@@ -20,10 +24,14 @@ class Renderer {
 
         void Clear() const;
 
-        void Draw(const VertexArray& vertexArray, ShaderProgram& shaderProgram, const glm::vec3& position) const;
-        void Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuffer, ShaderProgram& shaderProgram, const glm::vec3& position) const;
+        void Draw(const VertexArray& vertexArray, ShaderProgram& shaderProgram, const glm::mat4& model, const Texture2D& texture) const;
 
-        void Draw(Cube& cube);
-        void DrawTutorialCube(TutorialCube& cube);
-        void DrawLightSource(LightSource& cube);
+        void Draw(const VertexArray& vertexArray,
+                  const IndexBuffer& indexBuffer,
+                  ShaderProgram& shaderProgram,
+                  const glm::mat4& model,
+                  const Texture2D& texture) const;
+
+        void Draw(Archiv::Quad& quad, const glm::mat4& model);
+        void Draw(Archiv::Cube& cube);
 };
