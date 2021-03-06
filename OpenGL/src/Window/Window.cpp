@@ -11,12 +11,11 @@
 
 #include "Window.h"
 
-#include "../GLObject/Cube/TutorialCube/TutorialCube.h"
-#include "../GLObject/LightSource/LightSource.h"
 #include "../Renderer/Renderer.h"
 #include "../GLObject/GLUtils.h"
 #include "../GLObject/Mouse/Mouse.h"
 #include "../GLObject/Camera/Camera.h"
+#include "../GLObject/Cube/Cube.h"
 
 Camera& camera = Camera::GetInstance();
 Mouse& mouse = Mouse::GetInstance();
@@ -92,11 +91,7 @@ void Window::Initialize() {
 void Window::Show() {
     Renderer renderer;
 
-    TutorialCube cube;
-    cube.SetPosition(0.0f, 0.0f, 0.0f);
-
-    LightSource lightSource;
-    lightSource.SetPosition(10.0f, 10.0f, -10.0f);
+    Archiv::Cube cube;
 
     while (!ShouldClose()) {
         currentTime = CurrentTime();
@@ -110,9 +105,16 @@ void Window::Show() {
         }
 
         renderer.Clear();
+        //renderer.Draw(cube);
 
-        renderer.DrawTutorialCube(cube);
-        renderer.DrawLightSource(lightSource);
+        for (float x = 0.0f; x < 8.0f; x += 0.5f) {
+            for (float z = 0.0f; z < 8.0f; z += 0.5f) {
+                for (float y = 0.0f; y < 8.0f; y += 0.5f) {
+                    cube.SetPosition(x, y, z);
+                    renderer.Draw(cube);
+                }
+            }
+        }
 
         frames++;
 

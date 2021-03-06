@@ -1,47 +1,49 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <unordered_map>
 
-class ShaderProgram;
-class VertexArray;
-class Texture2D;
+#include "../../Math/Math.h"
 
-class Cube {
+namespace Archiv {
 
-    private:
-        ShaderProgram* shaderProgram;
-        VertexArray* vertexArray;
-        Texture2D* texture;
+    enum class CubeSide : int {
 
-        glm::vec3* position;
+        Top    = 0,
+        Bottom = 1,
+        Left   = 2,
+        Right  = 3,
+        Front  = 4,
+        Back   = 5
+    };
 
-    public:
-        Cube();
-        ~Cube();
+    class Quad;
 
-        void OnBeforeRender();
+    class Cube {
 
-        inline ShaderProgram& GetShaderProgram() const {
-            return *shaderProgram;
-        }
+        private:
+            std::unordered_map<CubeSide, Quad*> sides;
+            glm::vec3* position;
 
-        inline const VertexArray& GetVertexArray() const {
-            return *vertexArray;
-        }
+        public:
+            Cube();
+            ~Cube();
 
-        inline const Texture2D& GetTexture() const {
-            return *texture;
-        }
+            inline const std::unordered_map<CubeSide, Quad*>& GetSides() const {
+                return sides;
+            }
 
-        inline const glm::vec3& GetPosition() const {
-            return *position;
-        }
+            inline Quad& GetSideQuad(CubeSide side) {
+                return *(sides[side]);
+            }
 
-        inline void SetPosition(float x, float y, float z) {
-            position->x = x;
-            position->y = y;
-            position->z = z;
-        }
-};
+            inline const glm::mat4 GetModel() const {
+                return glm::translate(glm::mat4(1.0f), *position);
+            }
+
+            inline void SetPosition(float x, float y, float z) {
+                position->x = x;
+                position->y = y;
+                position->z = z;
+            }
+    };
+}

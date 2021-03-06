@@ -1,107 +1,78 @@
 #include <glad/glad.h>
 
-#include "../ShaderProgram/ShaderProgram.h"
-#include "../Shader/Shader.h"
-#include "../VertexArray/VertexArray.h"
-#include "../VertexBuffer/VertexBuffer.h"
-#include "../VertexBufferLayout/VertexBufferLayout.h"
-#include "../Texture/Texture2D.h"
+#include "../Quad/Quad.h"
 #include "../Vertex/Vertex.h"
 
 #include "Cube.h"
 
-Archiv::Vertex backSide[] = {
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 0.0f */ }
-};
+namespace Archiv {
 
-Archiv::Vertex frontSide[] = {
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ }
-};
+    Vertex backSide[] = {
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 0.0f },
+        Vertex { 0.25f, -0.25f, -0.25f, 1.0f, 0.0f },
+        Vertex { 0.25f,  0.25f, -0.25f, 1.0f, 1.0f },
+        Vertex { 0.25f,  0.25f, -0.25f, 1.0f, 1.0f },
+        Vertex {-0.25f,  0.25f, -0.25f, 0.0f, 1.0f },
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 0.0f }
+    };
 
-Archiv::Vertex leftSide[] = {
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ }
-};
+    Vertex frontSide[] = {
+        Vertex {-0.25f, -0.25f,  0.25f, 0.0f, 0.0f },
+        Vertex { 0.25f, -0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 1.0f },
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 1.0f },
+        Vertex {-0.25f,  0.25f,  0.25f, 0.0f, 1.0f },
+        Vertex {-0.25f, -0.25f,  0.25f, 0.0f, 0.0f }
+    };
 
-Archiv::Vertex rightSide[] = {
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ }
-};
+    Vertex leftSide[] = {
+        Vertex {-0.25f,  0.25f,  0.25f, 1.0f, 1.0f },
+        Vertex {-0.25f,  0.25f, -0.25f, 0.0f, 1.0f },
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 0.0f },
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 0.0f },
+        Vertex {-0.25f, -0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex {-0.25f,  0.25f,  0.25f, 1.0f, 1.0f }
+    };
 
-Archiv::Vertex bottomSide[] = {
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f, -0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f,  0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f, -0.5f, -0.5f, /* 0.0f, 1.0f */ }
-};
+    Vertex rightSide[] = {
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 1.0f },
+        Vertex { 0.25f,  0.25f, -0.25f, 0.0f, 1.0f },
+        Vertex { 0.25f, -0.25f, -0.25f, 0.0f, 0.0f },
+        Vertex { 0.25f, -0.25f, -0.25f, 0.0f, 0.0f },
+        Vertex { 0.25f, -0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 1.0f }
+    };
 
-Archiv::Vertex topSide[] = {
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f, -0.5f, /* 1.0f, 1.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex { 0.5f,  0.5f,  0.5f, /* 1.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f,  0.5f, /* 0.0f, 0.0f */ },
-    Archiv::Vertex {-0.5f,  0.5f, -0.5f, /* 0.0f, 1.0f */ }
-};
+    Vertex bottomSide[] = {
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 1.0f },
+        Vertex { 0.25f, -0.25f, -0.25f, 1.0f, 1.0f },
+        Vertex { 0.25f, -0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex { 0.25f, -0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex {-0.25f, -0.25f,  0.25f, 0.0f, 0.0f },
+        Vertex {-0.25f, -0.25f, -0.25f, 0.0f, 1.0f }
+    };
 
-Cube::Cube() {
-    shaderProgram = new ShaderProgram();
-    shaderProgram->AddShader(new Shader(GL_VERTEX_SHADER, "CubeVertexShader"));
-    shaderProgram->AddShader(new Shader(GL_FRAGMENT_SHADER, "CubeFragmentShader"));
-    shaderProgram->Finalize();
+    Vertex topSide[] = {
+        Vertex {-0.25f,  0.25f, -0.25f, 0.0f, 1.0f },
+        Vertex { 0.25f,  0.25f, -0.25f, 1.0f, 1.0f },
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex { 0.25f,  0.25f,  0.25f, 1.0f, 0.0f },
+        Vertex {-0.25f,  0.25f,  0.25f, 0.0f, 0.0f },
+        Vertex {-0.25f,  0.25f, -0.25f, 0.0f, 1.0f }
+    };
 
-    vertexArray = new VertexArray();
+    Cube::Cube() {
+        sides[CubeSide::Top]    = new Quad(topSide,    "res/textures/grass-top-420x420.png", true);
+        sides[CubeSide::Bottom] = new Quad(bottomSide, "res/textures/dirt.png", true);
+        sides[CubeSide::Left]   = new Quad(leftSide,   "res/textures/grass-side-420x420.jpeg", false);
+        sides[CubeSide::Right]  = new Quad(rightSide,  "res/textures/grass-side-420x420.jpeg", false);
+        sides[CubeSide::Front]  = new Quad(frontSide,  "res/textures/grass-side-420x420.jpeg", false);
+        sides[CubeSide::Back]   = new Quad(backSide,   "res/textures/grass-side-420x420.jpeg", false);
 
-    VertexBuffer vertexBuffer(nullptr, sizeof(float));
-    VertexBufferLayout vertexBufferLayout;
+        position = new glm::vec3(0.0f, 0.0f, 0.0f);
+    }
 
-    vertexBufferLayout.Add<float>(3); // Positions
-    vertexBufferLayout.Add<float>(2); // Texture coordinates
-
-    vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
-
-    texture = new Texture2D("res/textures/container.jpg", false, 0);
-
-    texture->Unbind();
-    vertexBuffer.Unbind();
-    vertexArray->Unbind();
-    shaderProgram->Unbind();
-
-    position = new glm::vec3(0.0f, 0.0f, 0.0f);
-}
-
-Cube::~Cube() {
-    delete texture;
-    delete vertexArray;
-    delete shaderProgram;
-
-    delete position;
-}
-
-void Cube::OnBeforeRender() {
-    glm::mat4 model = glm::translate(glm::mat4(1.0f), *position);
-    shaderProgram->SetUniformMatrix4f("u_model", model);
-
-
-    texture->Bind();
+    Cube::~Cube() {
+        delete position;
+    }
 }

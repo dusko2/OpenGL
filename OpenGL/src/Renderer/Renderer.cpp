@@ -7,11 +7,11 @@
 #include "../GLObject/VertexBuffer/VertexBuffer.h"
 #include "../GLObject/IndexBuffer/IndexBuffer.h"
 #include "../GLObject/ShaderProgram/ShaderProgram.h"
+#include "../GLObject/Texture/Texture2D.h"
 #include "../GLObject/GLUtils.h"
 
 #include "../GLObject/Cube/Cube.h"
-#include "../GLObject/Cube/TutorialCube/TutorialCube.h"
-#include "../GLObject/LightSource/LightSource.h"
+#include "../GLObject/Quad/Quad.h"
 #include "../GLObject/Camera/Camera.h"
 
 #include "Renderer.h"
@@ -25,13 +25,18 @@ void Renderer::Clear() const {
     GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 }
 
-void Renderer::Draw(const VertexArray& vertexArray, ShaderProgram& shaderProgram, const glm::vec3& position) const {
+void Renderer::Draw(const VertexArray& vertexArray,
+                    ShaderProgram& shaderProgram,
+                    const glm::mat4& model,
+                    const Texture2D& texture) const {
+
     shaderProgram.Bind();
-    shaderProgram.SetUniformMatrix4f("u_model", glm::translate(glm::mat4(1.0f), position));
+    shaderProgram.SetUniformMatrix4f("u_model", model);
     shaderProgram.SetUniformMatrix4f("u_view", camera.GetView());
     shaderProgram.SetUniformMatrix4f("u_projection", camera.GetProjection());
 
     vertexArray.Bind();
+    texture.Bind();
 
     GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 }
@@ -39,29 +44,28 @@ void Renderer::Draw(const VertexArray& vertexArray, ShaderProgram& shaderProgram
 void Renderer::Draw(const VertexArray& vertexArray,
                     const IndexBuffer& indexBuffer,
                     ShaderProgram& shaderProgram,
-                    const glm::vec3& position) const {
+                    const glm::mat4& model,
+                    const Texture2D& texture) const {
 
     shaderProgram.Bind();
-    shaderProgram.SetUniformMatrix4f("u_model", glm::translate(glm::mat4(1.0f), position));
+    shaderProgram.SetUniformMatrix4f("u_model", model);
     shaderProgram.SetUniformMatrix4f("u_view", camera.GetView());
     shaderProgram.SetUniformMatrix4f("u_projection", camera.GetProjection());
 
     vertexArray.Bind();
     indexBuffer.Bind();
+    texture.Bind();
 
     GLCall(glDrawElements(GL_TRIANGLES, indexBuffer.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
 
-void Renderer::Draw(Cube& cube) {
-    cube.OnBeforeRender();
-
-    Draw(cube.GetVertexArray(), cube.GetShaderProgram(), cube.GetPosition());
+void Renderer::Draw(Archiv::Quad& quad, const glm::mat4& model) {
+    Draw(quad.GetVertexArray(), quad.GetShaderProgram(), model, quad.GetTexture());
 }
 
-void Renderer::DrawTutorialCube(TutorialCube& cube) {
-    Draw(cube.GetVertexArray(), cube.GetShaderProgram(), cube.GetPosition());
-}
-
-void Renderer::DrawLightSource(LightSource& cube) {
-    Draw(cube.GetVertexArray(), cube.GetShaderProgram(), cube.GetPosition());
+void Renderer::Draw(Archiv::Cube& cube) {
+    glm::mat4 model = cube.GetModel();
+    for (auto& element : cube.GetSides()) {
+        Draw(*element.second, model);
+    }
 }

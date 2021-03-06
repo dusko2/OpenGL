@@ -75,10 +75,7 @@
     <ClCompile Include="src\Window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GLObject\Cube\TutorialCube\TutorialCube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GLObject\LightSource\LightSource.cpp">
+    <ClCompile Include="src\GLObject\Quad\Quad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,10 +149,7 @@
     <ClInclude Include="src\Math\Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GLObject\Cube\TutorialCube\TutorialCube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GLObject\LightSource\LightSource.h">
+    <ClInclude Include="src\GLObject\Quad\Quad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
