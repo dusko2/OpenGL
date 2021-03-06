@@ -5,7 +5,7 @@
 #include "../../Utils/IntTypes.h"
 #include "Texture2D.h"
 
-Texture2D::Texture2D(const char* path, bool transparent, uint32 index) : GLObject(__func__), index(index) {
+Texture2D::Texture2D(const char* filepath, bool transparent, uint32 index) : GLObject(__func__), index(index) {
     stbi_set_flip_vertically_on_load(true);
 
     GLCall(glGenTextures(1, &rendererID));
@@ -20,7 +20,7 @@ Texture2D::Texture2D(const char* path, bool transparent, uint32 index) : GLObjec
     int32 height;
     int32 channels;
 
-    uint8* data = stbi_load(path, &width, &height, &channels, 0);
+    uint8* data = stbi_load(filepath, &width, &height, &channels, 0);
 
     if (data) {
         GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB + transparent, width, height, 0, GL_RGB + transparent, GL_UNSIGNED_BYTE, data));

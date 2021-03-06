@@ -150,11 +150,12 @@
     <ClCompile Include="src\GLFWController\GLFWController.cpp" />
     <ClCompile Include="src\GLObject\Camera\Camera.cpp" />
     <ClCompile Include="src\GLObject\Cube\Cube.cpp" />
+    <ClCompile Include="src\GLObject\Cube\TutorialCube\TutorialCube.cpp" />
     <ClCompile Include="src\GLObject\GLUtils.cpp" />
     <ClCompile Include="src\GLObject\GLObject.cpp" />
     <ClCompile Include="src\GLObject\IndexBuffer\IndexBuffer.cpp" />
+    <ClCompile Include="src\GLObject\LightSource\LightSource.cpp" />
     <ClCompile Include="src\GLObject\Mouse\Mouse.cpp" />
-    <ClCompile Include="src\GLObject\Quad\Quad.cpp" />
     <ClCompile Include="src\GLObject\ShaderLoader\ShaderLoader.cpp" />
     <ClCompile Include="src\GLObject\Texture\Texture2D.cpp" />
     <ClCompile Include="src\GLObject\VertexArray\VertexArray.cpp" />
@@ -174,11 +175,12 @@
     <ClInclude Include="src\GLFWController\GLFWController.h" />
     <ClInclude Include="src\GLObject\Camera\Camera.h" />
     <ClInclude Include="src\GLObject\Cube\Cube.h" />
+    <ClInclude Include="src\GLObject\Cube\TutorialCube\TutorialCube.h" />
     <ClInclude Include="src\GLObject\GLUtils.h" />
     <ClInclude Include="src\GLObject\GLObject.h" />
     <ClInclude Include="src\GLObject\IndexBuffer\IndexBuffer.h" />
+    <ClInclude Include="src\GLObject\LightSource\LightSource.h" />
     <ClInclude Include="src\GLObject\Mouse\Mouse.h" />
-    <ClInclude Include="src\GLObject\Quad\Quad.h" />
     <ClInclude Include="src\GLObject\ShaderLoader\ShaderLoader.h" />
     <ClInclude Include="src\GLObject\Texture\Texture2D.h" />
     <ClInclude Include="src\GLObject\VertexArray\VertexArray.h" />

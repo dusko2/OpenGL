@@ -1,27 +1,24 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "../../../Math/Math.h"
 
+class Camera;
 class ShaderProgram;
 class VertexArray;
-class Texture2D;
 
-class Cube {
+class TutorialCube {
 
     private:
+        Camera& camera;
+
         ShaderProgram* shaderProgram;
         VertexArray* vertexArray;
-        Texture2D* texture;
 
         glm::vec3* position;
 
     public:
-        Cube();
-        ~Cube();
-
-        void OnBeforeRender();
+        TutorialCube();
+        ~TutorialCube();
 
         inline ShaderProgram& GetShaderProgram() const {
             return *shaderProgram;
@@ -29,10 +26,6 @@ class Cube {
 
         inline const VertexArray& GetVertexArray() const {
             return *vertexArray;
-        }
-
-        inline const Texture2D& GetTexture() const {
-            return *texture;
         }
 
         inline const glm::vec3& GetPosition() const {
