@@ -156,7 +156,6 @@
     <ClCompile Include="src\GLObject\IndexBuffer\IndexBuffer.cpp" />
     <ClCompile Include="src\GLObject\LightSource\LightSource.cpp" />
     <ClCompile Include="src\GLObject\Mouse\Mouse.cpp" />
-    <ClCompile Include="src\GLObject\ShaderLoader\ShaderLoader.cpp" />
     <ClCompile Include="src\GLObject\Texture\Texture2D.cpp" />
     <ClCompile Include="src\GLObject\VertexArray\VertexArray.cpp" />
     <ClCompile Include="src\GLObject\VertexBufferLayout\VertexBufferLayout.cpp" />
@@ -181,7 +180,6 @@
     <ClInclude Include="src\GLObject\IndexBuffer\IndexBuffer.h" />
     <ClInclude Include="src\GLObject\LightSource\LightSource.h" />
     <ClInclude Include="src\GLObject\Mouse\Mouse.h" />
-    <ClInclude Include="src\GLObject\ShaderLoader\ShaderLoader.h" />
     <ClInclude Include="src\GLObject\Texture\Texture2D.h" />
     <ClInclude Include="src\GLObject\VertexArray\VertexArray.h" />
     <ClInclude Include="src\GLObject\VertexBufferLayout\VertexBufferLayout.h" />

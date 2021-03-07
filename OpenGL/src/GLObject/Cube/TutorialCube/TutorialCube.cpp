@@ -65,8 +65,8 @@ TutorialCube::TutorialCube() : camera(Camera::GetInstance()) {
     vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
 
     shaderProgram = new ShaderProgram();
-    shaderProgram->AddShader(new Shader(GL_VERTEX_SHADER, "TutorialCubeVertexShader"));
-    shaderProgram->AddShader(new Shader(GL_FRAGMENT_SHADER, "TutorialCubeFragmentShader"));
+    shaderProgram->AddShader(new Shader(GL_VERTEX_SHADER, "TutorialCube.vs"));
+    shaderProgram->AddShader(new Shader(GL_FRAGMENT_SHADER, "TutorialCube.fs"));
     shaderProgram->Finalize();
 
     shaderProgram->Bind();

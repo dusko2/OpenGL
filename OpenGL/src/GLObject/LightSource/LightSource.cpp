@@ -71,8 +71,8 @@ LightSource::LightSource() : camera(Camera::GetInstance()) {
     vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
 
     shaderProgram = new ShaderProgram();
-    shaderProgram->AddShader(new Shader(GL_VERTEX_SHADER, "LightSourceVertexShader"));
-    shaderProgram->AddShader(new Shader(GL_FRAGMENT_SHADER, "LightSourceFragmentShader"));
+    shaderProgram->AddShader(new Shader(GL_VERTEX_SHADER, "LightSource.vs"));
+    shaderProgram->AddShader(new Shader(GL_FRAGMENT_SHADER, "LightSource.fs"));
     shaderProgram->Finalize();
 
     shaderProgram->Bind();

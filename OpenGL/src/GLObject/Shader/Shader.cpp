@@ -1,16 +1,18 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include <glad/glad.h>
 
 #include "../GLUtils.h"
-#include "../ShaderLoader/ShaderLoader.h"
 #include "Shader.h"
 
-Shader::Shader(uint32 type, const char* name) : GLObject(__func__) {
+Shader::Shader(uint32 type, const std::string& name) : GLObject(__func__) {
     GLCall(rendererID = glCreateShader(type));
 
-    const char* source = ShaderLoader::GetInstance().GetSource(name);
-    GLCall(glShaderSource(rendererID, 1, &source, NULL));
+    std::string source = ReadSource(name);
+    const char* sourcePtr = source.c_str();
+    GLCall(glShaderSource(rendererID, 1, &sourcePtr, NULL));
 
     if (!Compile()) {
         PrintCompileError();
@@ -19,6 +21,19 @@ Shader::Shader(uint32 type, const char* name) : GLObject(__func__) {
 
 Shader::~Shader() {
     GLCall(glDeleteShader(rendererID));
+}
+
+std::string Shader::ReadSource(const std::string& name) {
+    std::fstream fileInput(Shader::GetShaderPath() + name);
+
+    std::string line;
+    std::stringstream sourceBuilder;
+
+    while (getline(fileInput, line)) {
+        sourceBuilder << line << "\n";
+    }
+
+    return sourceBuilder.str();
 }
 
 bool Shader::Compile() {
