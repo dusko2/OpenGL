@@ -41,6 +41,10 @@ class Camera {
         void Move(CameraDirection cameraDirection, float deltaTime);
         void UpdateDirection(float offsetX, float offsetY);
 
+        inline const glm::vec3& GetPosition() const {
+            return cameraPos;
+        }
+
         inline glm::mat4 GetView() const {
             return glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         }

@@ -24,6 +24,6 @@ class Renderer {
         void Draw(const VertexArray& vertexArray, const IndexBuffer& indexBuffer, ShaderProgram& shaderProgram, const glm::vec3& position) const;
 
         void Draw(Cube& cube);
-        void DrawTutorialCube(TutorialCube& cube);
-        void DrawLightSource(LightSource& cube);
+        void DrawTutorialCube(TutorialCube& cube, float diff);
+        void DrawLightSource(LightSource& cube, float diff);
 };

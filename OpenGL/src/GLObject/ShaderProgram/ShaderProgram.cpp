@@ -55,7 +55,7 @@ void ShaderProgram::SetUniform1i(const std::string& name, int value) {
     GLCall(glUniform1i(GetUniform(name), value));
 }
 
-void ShaderProgram::SetUniformVec3(const std::string& name, glm::vec3& value) {
+void ShaderProgram::SetUniformVec3(const std::string& name, glm::vec3 value) {
     GLCall(glUniform3fv(GetUniform(name), 1, &value[0]));
 }
 

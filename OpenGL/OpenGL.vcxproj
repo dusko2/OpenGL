@@ -194,12 +194,17 @@
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="res\textures\awesomeface.png" />
     <Image Include="res\textures\container.jpg" />
     <Image Include="res\textures\wall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Cube.fs" />
+    <None Include="res\shaders\Cube.vs" />
+    <None Include="res\shaders\LightSource.fs" />
+    <None Include="res\shaders\LightSource.vs" />
+    <None Include="res\shaders\TutorialCube.fs" />
+    <None Include="res\shaders\TutorialCube.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

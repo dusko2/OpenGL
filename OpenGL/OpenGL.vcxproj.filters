@@ -154,9 +154,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="res\textures\wall.jpg">
       <Filter>Resource Files</Filter>
     </Image>
@@ -166,5 +163,13 @@
     <Image Include="res\textures\awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Cube.fs" />
+    <None Include="res\shaders\Cube.vs" />
+    <None Include="res\shaders\LightSource.fs" />
+    <None Include="res\shaders\LightSource.vs" />
+    <None Include="res\shaders\TutorialCube.fs" />
+    <None Include="res\shaders\TutorialCube.vs" />
   </ItemGroup>
 </Project>

@@ -111,8 +111,8 @@ void Window::Show() {
 
         renderer.Clear();
 
-        renderer.DrawTutorialCube(cube);
-        renderer.DrawLightSource(lightSource);
+        renderer.DrawTutorialCube(cube, (float)currentTime);
+        renderer.DrawLightSource(lightSource, (float)currentTime);
 
         frames++;
 
