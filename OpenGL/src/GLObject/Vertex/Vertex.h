@@ -8,11 +8,11 @@ namespace Archiv {
         float positionY;
         float positionZ;
 
-        // float texturePositionX;
-        // float texturePositionY;
-
         float normalX;
         float normalY;
         float normalZ;
+
+        float texturePositionX;
+        float texturePositionY;
     };
 }

@@ -5,6 +5,7 @@
 class Camera;
 class ShaderProgram;
 class VertexArray;
+class Texture2D;
 
 class TutorialCube {
 
@@ -13,6 +14,8 @@ class TutorialCube {
 
         ShaderProgram* shaderProgram;
         VertexArray* vertexArray;
+        Texture2D* texture;
+        Texture2D* textureSpecular;
 
         glm::vec3* position;
 
@@ -26,6 +29,14 @@ class TutorialCube {
 
         inline const VertexArray& GetVertexArray() const {
             return *vertexArray;
+        }
+
+        inline const Texture2D& GetTexture() const {
+            return *texture;
+        }
+
+        inline const Texture2D& GetTextureSpecular() const {
+            return *textureSpecular;
         }
 
         inline const glm::vec3& GetPosition() const {

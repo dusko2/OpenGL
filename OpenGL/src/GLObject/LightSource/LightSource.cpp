@@ -67,6 +67,7 @@ LightSource::LightSource() : camera(Camera::GetInstance()) {
     VertexBufferLayout vertexBufferLayout;
     vertexBufferLayout.Add<float>(3); // positions
     vertexBufferLayout.Add<float>(3); // normals
+    vertexBufferLayout.Add<float>(2); // texture coords
 
     vertexArray->AddBuffer(vertexBuffer, vertexBufferLayout);
 

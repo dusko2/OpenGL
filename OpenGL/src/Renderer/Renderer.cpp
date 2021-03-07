@@ -7,6 +7,7 @@
 #include "../GLObject/VertexBuffer/VertexBuffer.h"
 #include "../GLObject/IndexBuffer/IndexBuffer.h"
 #include "../GLObject/ShaderProgram/ShaderProgram.h"
+#include "../GLObject/Texture/Texture2D.h"
 #include "../GLObject/GLUtils.h"
 
 #include "../GLObject/Cube/Cube.h"
@@ -60,7 +61,6 @@ void Renderer::Draw(Cube& cube) {
 
 void Renderer::DrawTutorialCube(TutorialCube& cube, float diff) {
     ShaderProgram& shaderProgram = cube.GetShaderProgram();
-    const VertexArray& vertexArray = cube.GetVertexArray();
     const glm::vec3& position = cube.GetPosition();
 
     shaderProgram.Bind();
@@ -73,16 +73,17 @@ void Renderer::DrawTutorialCube(TutorialCube& cube, float diff) {
     shaderProgram.SetUniformMatrix4f("u_projection", camera.GetProjection());
     shaderProgram.SetUniformVec3("u_cameraPosition", camera.GetPosition());
 
-    shaderProgram.SetUniformVec3("material.ambient", glm::vec3(1.0f, 0.5f, 0.31f));
-    shaderProgram.SetUniformVec3("material.diffuse", glm::vec3(1.0f, 0.5f, 0.31f));
-    shaderProgram.SetUniformVec3("material.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+    shaderProgram.SetUniform1i("material.diffuse", 0);
+    shaderProgram.SetUniform1i("material.specular", 1);
     shaderProgram.SetUniform1f("material.shininess", 32.0f);
 
     shaderProgram.SetUniformVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
     shaderProgram.SetUniformVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
     shaderProgram.SetUniformVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 
-    vertexArray.Bind();
+    cube.GetVertexArray().Bind();
+    cube.GetTexture().Bind();
+    cube.GetTextureSpecular().Bind();
 
     GLCall(glDrawArrays(GL_TRIANGLES, 0, 36));
 }
