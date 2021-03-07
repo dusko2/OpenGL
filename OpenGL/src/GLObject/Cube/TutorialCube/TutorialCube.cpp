@@ -71,15 +71,6 @@ TutorialCube::TutorialCube() : camera(Camera::GetInstance()) {
 
     shaderProgram->Bind();
 
-    glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-    shaderProgram->SetUniformVec3("u_lightColor", lightColor);
-
-    glm::vec3 lightPosition = glm::vec3(1.2f, 1.0f, 2.0f);
-    shaderProgram->SetUniformVec3("u_lightPosition", lightPosition);
-
-    glm::vec3 objectColor = glm::vec3(1.0f, 0.5f, 0.31f);
-    shaderProgram->SetUniformVec3("u_objectColor", objectColor);
-
     vertexBuffer.Unbind();
     shaderProgram->Unbind();
     vertexArray->Unbind();

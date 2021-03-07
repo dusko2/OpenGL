@@ -66,12 +66,21 @@ void Renderer::DrawTutorialCube(TutorialCube& cube, float diff) {
     shaderProgram.Bind();
 
     glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-    model = glm::rotate(model, glm::radians(diff * 25.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    // model = glm::rotate(model, glm::radians(diff * 25.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     shaderProgram.SetUniformMatrix4f("u_model", model);
 
     shaderProgram.SetUniformMatrix4f("u_view", camera.GetView());
     shaderProgram.SetUniformMatrix4f("u_projection", camera.GetProjection());
     shaderProgram.SetUniformVec3("u_cameraPosition", camera.GetPosition());
+
+    shaderProgram.SetUniformVec3("material.ambient", glm::vec3(1.0f, 0.5f, 0.31f));
+    shaderProgram.SetUniformVec3("material.diffuse", glm::vec3(1.0f, 0.5f, 0.31f));
+    shaderProgram.SetUniformVec3("material.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+    shaderProgram.SetUniform1f("material.shininess", 32.0f);
+
+    shaderProgram.SetUniformVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+    shaderProgram.SetUniformVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+    shaderProgram.SetUniformVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 
     vertexArray.Bind();
 

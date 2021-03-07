@@ -13,6 +13,7 @@
 
 #include "../GLObject/Cube/TutorialCube/TutorialCube.h"
 #include "../GLObject/LightSource/LightSource.h"
+#include "../GLObject/ShaderProgram/ShaderProgram.h"
 #include "../Renderer/Renderer.h"
 #include "../GLObject/GLUtils.h"
 #include "../GLObject/Mouse/Mouse.h"
@@ -110,6 +111,9 @@ void Window::Show() {
         }
 
         renderer.Clear();
+
+        cube.GetShaderProgram().Bind();
+        cube.GetShaderProgram().SetUniformVec3("light.position", lightSource.GetPosition());
 
         renderer.DrawTutorialCube(cube, (float)currentTime);
         renderer.DrawLightSource(lightSource, (float)currentTime);
